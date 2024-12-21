@@ -1,0 +1,52 @@
+/**
+ * Visual Studio Code workspace configuration file.
+ * This file defines the workspace structure and editor settings.
+ */
+{
+	/**
+	 * Defines the folders included in the workspace.
+	 * @type {Array<Object>}
+	 */
+	"folders": [
+		{
+			/**
+		 * The path to the root folder of the workspace.
+		 * @type {string}
+		 */
+			"path": ".",
+		},
+	],
+	/**
+	 * Specifies various editor and workspace settings.
+	 * @type {Object}
+	 */
+	"settings": {
+		/**
+	   * Sets the font family for the editor.
+	   * @type {string}
+	   */
+		"editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
+		/**
+	   * Enables font ligatures in the editor.
+	   * @type {boolean}
+	   */
+		"editor.fontLigatures": true,
+		/**
+	   * Sets the font family for the integrated terminal.
+	   * @type {string}
+	   */
+		"terminal.integrated.fontFamily": "'Hack Nerd Font Propo',  Consolas, 'Courier New', monospace",
+		/**
+	   * Configures which files and folders to exclude from the workspace.
+	   * @type {Object}
+	   */
+		"files.exclude": {
+			"**/.git": false,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true,
+		},
+	},
+}
