@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "app/globals.css";
+import PageTransitionEffect from "./PageTransitionEffect";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,25 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="w-full h-screen bg-gradient-to-br from-violet-900 to-fuchsia-800 overflow-auto relative">
+          <div
+            className="fixed inset-0"
+            style={{
+              backgroundImage: `radial-gradient(rgba(192, 132, 252, .2) 2px, transparent 0)`,
+              backgroundSize: '15px 15px',
+              backgroundPosition: '-16.5px -16.5px',
+              maskImage: `radial-gradient(ellipse at center, rgba(0, 0, 0, 1), transparent 75%)`,
+            }}
+          />
+          <div className="relative min-h-screen w-full max-w-screen-sm mx-auto z-10">
+            {/* <Nav /> */}
+            <div className="w-full px-4 py-12">
+              <PageTransitionEffect>
+                {children}
+              </PageTransitionEffect>
+            </div>
+          </div>
+        </div>
       </body>
     </html>
   );
