@@ -4,7 +4,7 @@ const allowedOrigins = ["http://localhost:3000", "https://mdirshad.vercel.app"];
 
 const corsOptions = {
   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization"
 };
 
 export function middleware(request: NextRequest) {
@@ -17,13 +17,13 @@ export function middleware(request: NextRequest) {
     if (isAllowedOrigin) {
       const preflightHeaders = {
         "Access-Control-Allow-Origin": origin,
-        ...corsOptions,
+        ...corsOptions
       };
       return NextResponse.json({}, { headers: preflightHeaders });
     }
     return NextResponse.json(
       { message: "Forbidden: Origin not allowed" },
-      { status: 403 },
+      { status: 403 }
     );
   }
 
@@ -31,7 +31,7 @@ export function middleware(request: NextRequest) {
   if (!isAllowedOrigin) {
     return NextResponse.json(
       { message: "Forbidden: Origin not allowed" },
-      { status: 403 },
+      { status: 403 }
     );
   }
 
@@ -46,5 +46,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: "/api/:path*", // Apply middleware to all API routes
+  matcher: "/api/:path*" // Apply middleware to all API routes
 };
