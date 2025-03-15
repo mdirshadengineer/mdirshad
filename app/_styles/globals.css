@@ -6,6 +6,7 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
+    /* --background: 0 100% 1%; */
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -30,6 +31,14 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -56,22 +65,18 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
 @layer base {
-  :root {
-    --background: #ffffff;
-    --foreground: #171717;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background: #09090b;
-      --foreground: #ededed;
-    }
-  }
-
   *,
   *::before,
   *::after {
@@ -81,6 +86,14 @@
 
   html {
     @apply scroll-smooth;
+  }
+
+  html.dark pre {
+    @apply !bg-zinc-900;
+  }
+
+  html.light pre {
+    @apply !bg-zinc-900;
   }
 
   body {
@@ -155,4 +168,110 @@
   .container {
     @apply px-4 xl:px-6 2xl:px-4 mx-auto max-w-[1536px];
   }
+}
+
+.prose {
+  @apply text-zinc-400 leading-7;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  @apply text-zinc-900 dark:text-zinc-100 font-semibold tracking-tight;
+}
+
+.prose h1 {
+  @apply text-3xl lg:text-4xl mb-8 font-bold;
+}
+
+.prose h2 {
+  @apply text-2xl lg:text-3xl mt-12 mb-6 font-bold;
+}
+
+.prose h3 {
+  @apply text-xl lg:text-2xl mt-8 mb-4;
+}
+
+.prose p {
+  @apply text-zinc-900 dark:text-zinc-100 mb-6 text-base leading-7;
+}
+
+.prose a {
+  @apply text-zinc-900 dark:text-zinc-200 underline underline-offset-2 decoration-zinc-800 hover:decoration-zinc-700 transition-all;
+}
+
+.prose ul {
+  @apply my-6 ml-6 list-disc;
+}
+
+.prose li {
+  @apply mb-2 text-zinc-900 dark:text-zinc-100;
+}
+
+.prose img {
+  @apply rounded-lg border border-zinc-800;
+}
+
+.prose blockquote {
+  @apply border-l-2 border-zinc-800 pl-4 italic my-6;
+}
+
+.prose time {
+  @apply text-zinc-700 dark:text-zinc-200 font-bold;
+}
+
+.prose pre {
+  @apply p-4 bg-zinc-900 rounded-lg shadow-xl border border-zinc-400 dark:border-zinc-800 my-6 overflow-x-auto;
+}
+
+.prose code {
+  @apply text-zinc-200 bg-zinc-900 px-1.5 py-0.5 rounded-md text-sm;
+}
+
+.prose pre code {
+  @apply text-zinc-200 bg-transparent p-0 text-sm leading-relaxed;
+}
+
+.prose .anchor {
+  @apply absolute invisible no-underline -ml-8 pr-2 cursor-pointer;
+}
+
+.prose *:hover > .anchor {
+  @apply visible;
+}
+
+.prose .anchor:after {
+  @apply text-zinc-700 text-lg;
+  content: "#";
+}
+
+[data-rehype-pretty-code-fragment] {
+  @apply my-6;
+}
+
+[data-rehype-pretty-code-fragment] code {
+  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0;
+  counter-reset: line;
+  box-decoration-break: clone;
+}
+
+[data-rehype-pretty-code-fragment] .line {
+  @apply px-4 py-1 border-l-2 border-l-transparent;
+}
+
+[data-rehype-pretty-code-fragment] .line--highlighted {
+  @apply border-l-zinc-700 bg-zinc-800/30;
+}
+
+[data-rehype-pretty-code-fragment] .word--highlighted {
+  @apply bg-zinc-800/50 rounded p-1;
+}
+
+[data-rehype-pretty-code-title] {
+  @apply px-4 py-3 font-mono text-xs font-medium border-b border-zinc-800 bg-zinc-900 text-zinc-400 rounded-t-lg;
+}
+
+[data-rehype-pretty-code-title] + pre {
+  @apply mt-0 rounded-t-none;
 }

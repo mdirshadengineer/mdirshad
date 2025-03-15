@@ -35,7 +35,7 @@
      * Sets the font family for the integrated terminal.
      * @type {string}
      */
-    "terminal.integrated.fontFamily": "'Hack Nerd Font Propo',  Consolas, 'Courier New', monospace",
+    "terminal.integrated.fontFamily": "'MesloLGS NF',  Consolas, 'Courier New', monospace",
     /**
      * Configures which files and folders to exclude from the workspace.
      * @type {Object}

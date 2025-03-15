@@ -1,10 +1,18 @@
 import "app/_styles/globals.css";
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Poppins, Dancing_Script } from "next/font/google";
+import Navigation from "src/components/common/Navigation";
+import { ThemeProvider } from "src/providers/theme-provider";
 
 const poppins = Poppins({
   weight: ["400", "500", "600"],
   variable: "--font-poppins",
+  subsets: ["latin"]
+});
+
+const dancingScript = Dancing_Script({
+  weight: ["400", "500"],
+  variable: "--font-dancing-script",
   subsets: ["latin"]
 });
 
@@ -21,7 +29,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className={`${poppins.variable} antialiased`}>{children}</body>
+      <body
+        className={`${poppins.variable} ${dancingScript.variable} antialiased bg-background`}>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange>
+          <Navigation />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
